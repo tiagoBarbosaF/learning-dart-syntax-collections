@@ -1,51 +1,16 @@
-import 'class/person.dart';
+import 'class/travel.dart';
 import 'enums/transport.dart';
 
 void main() {
-  choiceMeansTransport(Transport.skate);
+  Travel travel = Travel(transport: Transport.airplane);
 
-  Set<String> recordVisits = <String>{};
-  recordVisits = recordDestinations('Fortaleza', recordVisits);
-  recordVisits = recordDestinations('São Paulo', recordVisits);
-  recordVisits = recordDestinations('Bahia', recordVisits);
-  recordVisits = recordDestinations('Fortaleza', recordVisits);
-  print(recordVisits);
+  print(travel.totalLocalVisits);
 
-  Map<String, dynamic> recordTravelPrices = {};
-  recordTravelPrices['Fortaleza'] = 1300;
-  recordTravelPrices['São Paulo'] = 1000;
-  recordTravelPrices['Bahia'] = 900;
-  recordTravelPrices['Fortaleza'] = 1300;
-  recordTravelPrices['Porto Alegre'] = 'Very expensive';
+  travel.visit("Museum");
 
-  print(recordTravelPrices);
-  print(recordTravelPrices['Bahia']);
+  print(travel.totalLocalVisits);
 
-  Person person = Person('Tiago', 37, true);
-  print(person.toMap());
+  travel.totalLocalVisits = 10;
 
-}
-
-choiceMeansTransport(Transport transport) {
-  switch (transport) {
-    case Transport.car:
-      print('I\'m going by car.');
-      break;
-    case Transport.bicycle:
-      print('I\'m going by bicycle.');
-      break;
-    case Transport.train:
-      print('I\'m going by train.');
-      break;
-    default:
-      print('I\'m going to an adventure. Doesn\'t matter was the method.');
-      break;
-  }
-}
-
-recordDestinations(String destination, Set<String> database) {
-
-  database.add(destination);
-
-  return database;
+  print(travel.totalLocalVisits);
 }
